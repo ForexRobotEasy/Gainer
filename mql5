@@ -1,0 +1,106 @@
+
+//+------------------------------------------------------------------+
+//|                                               Gainer.mq5         |
+//|                        Copyright 2022, Forex Robot Easy Team      |
+//|                                       https://www.forexroboteasy.com |
+//+------------------------------------------------------------------+
+#property copyright 'Copyright 2022, Forex Robot Easy Team'
+#property link      'https://www.forexroboteasy.com'
+#property version   '1.00'
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set chart timeframe to M15
+    ChartSetInteger(0, CHART_PERIOD_CURRENT, PERIOD_M15);
+    
+    // Set broker timezone settings
+    int brokerTimeZone = TimeCurrent() - TimeLocal();
+    
+    // Print broker timezone settings to log
+    Print('Broker Timezone: ', brokerTimeZone);
+    
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform any necessary cleanup tasks here
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if chart timeframe is M15
+    if (Period() != PERIOD_M15)
+    {
+        Print('Invalid chart timeframe. Skipping trade signals.');
+        return;
+    }
+    
+    // Check market conditions and generate trade signals
+    bool buySignal = CheckBuySignal();
+    bool sellSignal = CheckSellSignal();
+    
+    // Execute trades based on generated signals
+    if (buySignal)
+    {
+        ExecuteBuyTrade();
+    }
+    
+    if (sellSignal)
+    {
+        ExecuteSellTrade();
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Check buy signal                                                  |
+//+------------------------------------------------------------------+
+bool CheckBuySignal()
+{
+    // Implement mean reversion range trading strategy for buy signals
+    
+    // Add your code here
+    
+    return true; // Placeholder, replace with actual condition
+}
+
+//+------------------------------------------------------------------+
+//| Check sell signal                                                 |
+//+------------------------------------------------------------------+
+bool CheckSellSignal()
+{
+    // Implement mean reversion range trading strategy for sell signals
+    
+    // Add your code here
+    
+    return true; // Placeholder, replace with actual condition
+}
+
+//+------------------------------------------------------------------+
+//| Execute buy trade                                                 |
+//+------------------------------------------------------------------+
+void ExecuteBuyTrade()
+{
+    // Implement code to execute buy trade
+    
+    // Add your code here
+}
+
+//+------------------------------------------------------------------+
+//| Execute sell trade                                                |
+//+------------------------------------------------------------------+
+void ExecuteSellTrade()
+{
+    // Implement code to execute sell trade
+    
+    // Add your code here
+}
